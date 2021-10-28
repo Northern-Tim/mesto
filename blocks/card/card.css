@@ -1,27 +1,9 @@
 .card {
   display: grid;
-  grid-template-columns: minmax(340px, 460px) minmax(352px, 484px);
-  grid-template-rows: max-content max-content;
+  grid-template-columns: 282px;
+  grid-template-rows: 282px calc(361px - 282px);
   margin: auto;
-  gap: 48px 40px;
+  background-color: #fff;
+  border-radius: 10px;
 }
 
-@media screen and (max-width: 1279px) {
-  .card {
-    gap: 48px 32px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .card {
-    gap: 48px 28px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .card {
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(4, max-content);
-    gap: 32px;
-  }
-}

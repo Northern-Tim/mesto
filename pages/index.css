@@ -2,6 +2,25 @@
 @import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
+@import url(../blocks/menu/menu.css);
+@import url(../blocks/menu/user-photo/menu__user-photo.css);
+@import url(../blocks/menu/user-info/menu__user-info.css);
+@import url(../blocks/menu/user-name-box/menu__user-name-box.css);
+@import url(../blocks/menu/user-name/menu__user-name.css);
+@import url(../blocks/menu/user-working/menu__user-working.css);
+@import url(../blocks/menu/user-info-changes-button/menu__user-info-changes-button.css);
+@import url(../blocks/menu/add-button/menu__add-button.css);
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/card/description/card__description.css);
+@import url(../blocks/card/button/card__button.css);
+
+
+
+
+
+
+
+
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/language-switch/language-switch.css);
 @import url(../blocks/language-switch/__item/language-switch__item.css);

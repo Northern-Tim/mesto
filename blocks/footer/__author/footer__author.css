@@ -4,12 +4,5 @@
   font-weight: normal;
   text-align: right;
   margin: 0;
-  color:white; 
-}
-
-@media screen and (max-width: 767px) {
-  .footer__author {
-    margin: 48px 0 0;
-    line-height: 1;
-  }
+  color: #545454;
 }

@@ -1,0 +1,9 @@
+.card__button {
+  background-image: url(../../../images/heart.svg);
+  width: 24px;
+  height: 19px;
+  border-style: none;
+  background-repeat: no-repeat;
+  background-color: white;
+  padding: 0 5px 0 0;
+}

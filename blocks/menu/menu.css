@@ -1,0 +1,12 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .menu {
+    flex-direction: column;
+    }
+}

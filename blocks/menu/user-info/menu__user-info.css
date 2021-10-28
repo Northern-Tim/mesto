@@ -1,0 +1,13 @@
+.menu__user-info {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 30px;
+  min-width: 336px;
+}
+
+@media screen and (max-width: 900px) {
+  .menu__user-info {
+    margin: 0;
+    align-items: center;
+    }
+}

@@ -1,28 +1,11 @@
 .card__title {
   font-weight: 900;
-  font-size: 72px;
+  font-size: 24px;
   line-height: 1.06;
   margin: 0;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .card__title {
-    font-size: 42px;
-    line-height: 1.1;
-    max-width: min-content;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .card__title {
-    width: 90%;
-    margin: 0 auto 0;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .card__title {
-    font-size: 32px;
-    line-height: 1.09;
-  }
+  color: black;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 90%;
 }

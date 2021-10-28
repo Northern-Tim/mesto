@@ -1,0 +1,9 @@
+.menu__user-photo {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 900px) {
+  .menu__user-photo {
+    margin-bottom: 26px;
+    }
+}

@@ -1,0 +1,15 @@
+.menu__user-info-changes-button {
+  background-image: url(../../../images/changes_button.svg);
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-color: black;
+  margin-left: 18px;
+  border-style: none;
+}
+
+@media screen and (max-width: 900px) {
+  .menu__user-info-changes-button {
+    margin-left: 10px;
+    }
+}
