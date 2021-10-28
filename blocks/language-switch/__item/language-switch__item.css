@@ -1,0 +1,12 @@
+.language-switch__item {
+  padding-right: 18px;
+  list-style-type: none;
+}
+
+.language-switch__item:hover {
+  opacity: .8;
+}
+
+.language-switch__item:last-child {
+  padding-right: 0;
+}

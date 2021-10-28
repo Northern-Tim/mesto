@@ -1,0 +1,9 @@
+@media screen and (max-width: 767px) {
+  .footer__info-item {
+    margin: 0 0 32px;
+  }
+
+  .footer__info-item:last-child {
+    margin: 0;
+  }
+}

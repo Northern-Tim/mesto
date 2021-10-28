@@ -1,0 +1,16 @@
+.card__url-container {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #AAAAAA;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 767px) {
+  .card__url-container {
+    width: 90%;
+    margin: 0 auto 0;
+  }
+}

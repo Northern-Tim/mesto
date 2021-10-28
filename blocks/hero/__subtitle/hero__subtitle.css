@@ -1,0 +1,23 @@
+.hero__subtitle {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 1.2;
+  text-align: center;
+  max-width: 640px;
+  margin: 32px auto 64px;
+}
+
+@media screen and (max-width: 1024px) {
+  .hero__subtitle {
+    margin: 32px auto 56px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hero__subtitle {
+    font-size: 16px;
+    line-height: 1.25;
+    max-width: 288px;
+    margin: 16px auto 40px;
+  }
+}

@@ -1,0 +1,13 @@
+.description__paragraph {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 163%;
+  margin: 0 0 33px;
+  max-width: 690px;
+}
+
+@media screen and (max-width: 768px) {
+  .description__paragraph {
+    max-width: 720px;
+    }
+}

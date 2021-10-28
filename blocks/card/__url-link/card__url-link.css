@@ -1,0 +1,11 @@
+.card__url-link {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration-line: underline;
+  color: #fff;
+}
+
+.card__url-link:hover {
+  opacity: .8;
+}
