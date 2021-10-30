@@ -11,5 +11,7 @@
 @media screen and (max-width: 900px) {
   .menu__add-button {
     margin: 36px 0 0;
+    width: 282px;
+    background-image: url(../../../images/Add_Button_mobile.svg);
     }
 }

@@ -19,5 +19,6 @@
     grid-template-columns: 282px;
     grid-template-rows: repeat(6, 361px);
     justify-content: center;
+    margin-top: 36px;
     }
 }
