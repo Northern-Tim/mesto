@@ -6,4 +6,10 @@
   background-repeat: no-repeat;
   background-color: white;
   padding: 0 5px 0 0;
+  cursor: pointer;
+  transition: opacity 0.3s linear 0s;
+}
+
+.card__button:hover {
+  opacity: 0.6;
 }

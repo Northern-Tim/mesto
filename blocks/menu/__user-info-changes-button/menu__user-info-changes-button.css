@@ -7,6 +7,11 @@
   margin-left: 22px;
   border-style: none;
   cursor: pointer;
+  transition: opacity 0.3s linear 0s;
+}
+
+.menu__user-info-changes-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 900px) {

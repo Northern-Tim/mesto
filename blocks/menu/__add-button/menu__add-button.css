@@ -6,6 +6,12 @@
   background-color: black;
   border-style: none;
   margin-left: 244px;
+  transition: opacity 0.3s linear 0s;
+  cursor: pointer;
+}
+
+.menu__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 900px) {

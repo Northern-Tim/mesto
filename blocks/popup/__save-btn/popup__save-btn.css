@@ -7,6 +7,11 @@
   height: 50px;
   margin-top: 18px;
   cursor: pointer;
+  transition: opacity 0.3s linear 0s;
+}
+
+.popup__save-btn {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 600px) {

@@ -11,6 +11,11 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+  transition: opacity 0.3s linear 0s;
+}
+
+.popup__close-btn:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 600px) {
