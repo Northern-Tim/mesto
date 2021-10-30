@@ -76,6 +76,28 @@
   <footer class="footer">
     <p class="footer__author">&copy;2021. Mesto Russia</p>
   </footer>
+
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__close-btn"></button>
+      <form class="popup__form">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input type="text" class="popup__input popup__input-name" name="user-name" placeholder="Имя пользователя" required>
+        <input type="text" class="popup__input popup__input-work" name="user-name" placeholder="Род деятельности" required>
+        <button class="popup__save-btn">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
+
+
+<form class="form__admin">
+  <div class="form__main-container">
+    <h2 class="form__heading">Задайте параметры</h2>
+    <fieldset class="form__input-container form__input-container_ctrl_texts">
+      <label for="heading" class="form__label">Заголовок</label>
+      <input type="text" class="form__item form__item_el_heading" id="heading" name="heading" placeholder="О чём статья?" required>
+      <label for="subheading" class="form__label">Подзаголовок</label>

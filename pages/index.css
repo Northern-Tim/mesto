@@ -3,20 +3,30 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/menu/menu.css);
-@import url(../blocks/menu/user-photo/menu__user-photo.css);
-@import url(../blocks/menu/user-info/menu__user-info.css);
-@import url(../blocks/menu/user-name-box/menu__user-name-box.css);
-@import url(../blocks/menu/user-name/menu__user-name.css);
-@import url(../blocks/menu/user-working/menu__user-working.css);
-@import url(../blocks/menu/user-info-changes-button/menu__user-info-changes-button.css);
-@import url(../blocks/menu/add-button/menu__add-button.css);
+@import url(../blocks/menu/__user-photo/menu__user-photo.css);
+@import url(../blocks/menu/__user-info/menu__user-info.css);
+@import url(../blocks/menu/__user-name-box/menu__user-name-box.css);
+@import url(../blocks/menu/__user-name/menu__user-name.css);
+@import url(../blocks/menu/__user-working/menu__user-working.css);
+@import url(../blocks/menu/__user-info-changes-button/menu__user-info-changes-button.css);
+@import url(../blocks/menu/__add-button/menu__add-button.css);
 @import url(../blocks/cards/cards.css);
-@import url(../blocks/card/description/card__description.css);
-@import url(../blocks/card/button/card__button.css);
-
-
-
-
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__description/card__description.css);
+@import url(../blocks/card/__button/card__button.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__author/footer__author.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input-name/popup__input-name.css);
+@import url(../blocks/popup/__input-work/popup__input-work.css);
+@import url(../blocks/popup/__save-btn/popup__save-btn.css);
 
 
 
