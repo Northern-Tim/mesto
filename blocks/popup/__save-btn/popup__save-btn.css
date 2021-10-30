@@ -6,4 +6,13 @@
   width: 358px;
   height: 50px;
   margin-top: 18px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__save-btn {
+    width: 238px;
+    height: 46px;
+    margin-top: 15px;
+  }
 }
