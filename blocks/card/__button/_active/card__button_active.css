@@ -1,5 +1,5 @@
-.card__button {
-  background-image: url(../../../images/heart.svg);
+.card__button_active {
+  background-image: url(../../../../images/heart_active.svg);
   width: 24px;
   height: 19px;
   border-style: none;
@@ -10,6 +10,6 @@
   transition: opacity 0.3s linear 0s;
 }
 
-.card__button:hover {
+.card__button_active:hover {
   opacity: 0.5;
 }

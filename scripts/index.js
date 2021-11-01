@@ -8,20 +8,15 @@ let formElement = document.querySelector('.popup__form');
 let inputUserName = document.querySelector('.popup__input-name');
 let inputUserWork = document.querySelector('.popup__input-work');
 
-
 function openPopup() {
   popup.classList.add("popup_opened");
   inputUserName.value = userName.textContent;
   inputUserWork.value = userWorking.textContent;
 };
-changeButton.addEventListener('click', openPopup); 
-
 
 function closePopup() {
   popup.classList.remove("popup_opened");
 };
-closeButton.addEventListener('click', closePopup); 
-
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
@@ -30,5 +25,8 @@ function formSubmitHandler (evt) {
   userName.textContent = inputUserName.value;
   userWorking.textContent = inputUserWork.value;
 }
+
+changeButton.addEventListener('click', openPopup); 
+closeButton.addEventListener('click', closePopup); 
 formElement.addEventListener('submit', formSubmitHandler); 
 saveButton.addEventListener('click', closePopup); 
