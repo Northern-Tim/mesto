@@ -6,17 +6,17 @@
   width: 282px;
   margin: 68px 0 60px;
   min-width: 282px;
-  }
+}
 
-  @media screen and (min-width: 600px) and (max-width: 900px) {
-    .footer {
-      width: 581px;
-      margin: 66px auto 60px;
-      }
+@media screen and (min-width: 600px) and (max-width: 900px) {
+  .footer {
+    width: 581px;
+    margin: 66px auto 60px;
   }
-  
-  @media screen and (max-width: 600px) {
-    .footer {
-      margin: 50px auto 36px;
-      }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    margin: 50px auto 36px;
   }
+}
