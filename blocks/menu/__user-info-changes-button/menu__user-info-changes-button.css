@@ -4,7 +4,7 @@
   height: 24px;
   background-repeat: no-repeat;
   background-color: black;
-  margin-left: 22px;
+  margin-left: 20px;
   border-style: none;
   cursor: pointer;
   transition: opacity 0.3s linear 0s;
@@ -20,5 +20,5 @@
     width: 18px;
     height: 18px;
     background-size: contain;
-    }
+  }
 }

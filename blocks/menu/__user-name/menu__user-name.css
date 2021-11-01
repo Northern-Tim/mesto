@@ -1,9 +1,9 @@
 .menu__user-name {
-  margin: 0 0 16px;
+  margin: 0 0 10px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 290px;
+  max-width: 293px;
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
@@ -17,5 +17,5 @@
     line-height: 33px;
     text-align: center;
     max-width: 220px;
-    }
+  }
 }
