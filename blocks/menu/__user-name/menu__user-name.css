@@ -11,8 +11,8 @@
 
 @media screen and (max-width: 900px) {
   .menu__user-name {
-    margin: 0 0 8px;
-    padding-left: 34px;
+    margin: 0 0 6px;
+    padding-left: 28px;
     font-size: 27px;
     line-height: 33px;
     text-align: center;

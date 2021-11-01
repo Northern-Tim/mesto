@@ -9,8 +9,9 @@
 
 @media screen and (max-width: 600px) {
   .popup__title {
-    margin: 34px auto 54px;
+    margin: 25px auto 65px;
     font-size: 18px;
     line-height: 22px;
+    padding-right: 8px;
   }
 }
