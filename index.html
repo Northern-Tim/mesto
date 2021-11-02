@@ -19,11 +19,11 @@
       <div class="menu__user-info">
         <div class="menu__user-name-box">
           <h1 class="menu__user-name">Жак-Ив Кусто</h1>
-          <button class="menu__user-info-changes-button"></button>
+          <button class="menu__user-info-changes-button" type="button"></button>
         </div>
         <p class="menu__user-working">Исследователь океана</p>
       </div>
-      <button class="menu__add-button"></button>
+      <button class="menu__add-button" type="button" aria-label="Добавить"></button>
     </section>
 
     <section class="cards">
@@ -31,42 +31,42 @@
         <img src="./images/karelia.jpg" alt="Карелия" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Карелия</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
       <article class="card">
         <img src="./images/walday.jpg" alt="Валдай" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Валдай</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
       <article class="card">
         <img src="./images/winter.jpg" alt="Мурманск" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Мурманск</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
       <article class="card">
         <img src="./images/norway.jpg" alt="Норвегия" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Норвегия</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
       <article class="card">
         <img src="./images/mountain.jpg" alt="Горы" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Заснеженные вершины Кавказа</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
       <article class="card">
         <img src="./images/lake.jpg" alt="Озеро" class="card__image">
         <div class="card__description">
           <h2 class="card__title">Озеро Большой Медведь</h2>
-          <button class="card__button"></button>
+          <button class="card__button" type="button" aria-label="Лайк"></button>
         </div>
       </article>
 
@@ -79,14 +79,14 @@
 
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-btn"></button>
-      <form class="popup__form">
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" class="popup__input popup__input-name" name="user-name" placeholder="Имя пользователя"
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form class="popup__form" name="user-info">
+        <input type="text" class="popup__input popup__input_value_name" name="user-name" placeholder="Имя пользователя"
           required>
-        <input type="text" class="popup__input popup__input-work" name="user-work" placeholder="Род деятельности"
+        <input type="text" class="popup__input popup__input_value_work" name="user-work" placeholder="Род деятельности"
           required>
-        <button class="popup__save-btn">Сохранить</button>
+        <button class="popup__save-btn" type="submit">Сохранить</button>
       </form>
     </div>
   </div>

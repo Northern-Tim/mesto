@@ -1,5 +1,4 @@
 .menu__user-name-box {
   display: flex;
-  flex-direction: row;
   align-items: baseline;
 }
