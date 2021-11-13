@@ -51,7 +51,12 @@ cardElement.querySelector('.card__image').src = element.link;
 cardElement.querySelector('.card__title').textContent = element.name;
 // отображаем на странице
 cardsSection.append(cardElement); 
+cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
+  evt.target.classList.toggle('card__button_active');
+}); 
 });
+
+
 
 function addNewPhoto(evt) {
   evt.preventDefault();
@@ -60,10 +65,8 @@ function addNewPhoto(evt) {
   cardElement.querySelector('.card__image').src = inputPhotoLink.value;
   cardElement.querySelector('.card__title').textContent = inputPhotoCaption.value;
   cardsSection.prepend(cardElement); 
-
-
   cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
-    evt.target.classList.add('card__button_active');
+    evt.target.classList.toggle('card__button_active');
   }); 
 }
 
