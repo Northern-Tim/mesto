@@ -53,19 +53,21 @@ cardElement.querySelector('.card__title').textContent = element.name;
 cardsSection.append(cardElement); 
 });
 
-
-
 function addNewPhoto(evt) {
   evt.preventDefault();
   closePopupPhoto();
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   cardElement.querySelector('.card__image').src = inputPhotoLink.value;
   cardElement.querySelector('.card__title').textContent = inputPhotoCaption.value;
   cardsSection.prepend(cardElement); 
+
+
+  cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
+    evt.target.classList.add('card__button_active');
+  }); 
 }
 
-cardsElement.querySelector('.card__button').addEventListener('click', function (evt) {
-  evt.currentTarget.classList.add('card__button_active');
-}); 
+
 
 
 function openPopupUser() {
