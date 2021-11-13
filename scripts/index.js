@@ -10,6 +10,12 @@ const closeButtonPhoto = document.querySelector('.popup_type_photo .popup__close
 const formElement = document.querySelector('.popup__form');
 const inputUserName = document.querySelector('.popup__input_value_name');
 const inputUserWork = document.querySelector('.popup__input_value_work');
+const formElementPhoto = document.querySelector('.popup_type_photo .popup__form');
+const inputPhotoCaption = document.querySelector('.popup_type_photo .popup__input_value_name');
+const inputPhotoLink = document.querySelector('.popup_type_photo .popup__input_value_work');
+const cardTemplate = document.querySelector('#card').content;
+const cardsSection = document.querySelector('.cards');
+const likeBtn = document.querySelector('.card__button');
 const initialCards = [
   {
     name: 'Архыз',
@@ -37,34 +43,6 @@ const initialCards = [
   }
 ];
 
-const cardTemplate = document.querySelector('#card').content;
-const cardsSection = document.querySelector('.cards');
-
-
-const emeraldCityHeroes = ['Лев', 'Дровосек', 'Страшила'];
-emeraldCityHeroes.push('Элли', 'Тотошка');
-
-console.log(emeraldCityHeroes);
-
-// ["Лев", "Дровосек", "Страшила", "Элли", "Тотошка"] 
-
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-  userName.textContent = inputUserName.value;
-  userWorking.textContent = inputUserWork.value;
-  closePopup();
-}
-
-
-
-
-
-
-
-
-
-
-
 initialCards.forEach(function (element) {
 // клонируем содержимое тега template
 const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -74,6 +52,21 @@ cardElement.querySelector('.card__title').textContent = element.name;
 // отображаем на странице
 cardsSection.append(cardElement); 
 });
+
+
+
+function addNewPhoto(evt) {
+  evt.preventDefault();
+  closePopupPhoto();
+  cardElement.querySelector('.card__image').src = inputPhotoLink.value;
+  cardElement.querySelector('.card__title').textContent = inputPhotoCaption.value;
+  cardsSection.prepend(cardElement); 
+}
+
+cardsElement.querySelector('.card__button').addEventListener('click', function (evt) {
+  evt.currentTarget.classList.add('card__button_active');
+}); 
+
 
 function openPopupUser() {
   inputUserName.value = userName.textContent;
@@ -93,6 +86,8 @@ function closePopupPhoto() {
   popupPhoto.classList.remove('popup_opened');
 };
 
+
+
 function formSubmitHandler(evt) {
   evt.preventDefault();
   userName.textContent = inputUserName.value;
@@ -105,3 +100,4 @@ addButton.addEventListener('click', openPopupPhoto);
 closeButton.addEventListener('click', closePopupUser);
 closeButtonPhoto.addEventListener('click', closePopupPhoto);
 formElement.addEventListener('submit', formSubmitHandler);
+formElementPhoto.addEventListener('submit', addNewPhoto)
