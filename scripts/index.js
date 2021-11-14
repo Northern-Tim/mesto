@@ -61,7 +61,7 @@ initialCards.forEach(function (element) {
   cardImage.addEventListener('click', function (event) { // картинка на весь экран
     openPopupFullscreen(popupImage);
     popupImage.setAttribute('src', event.target.src);
-    popupImage.setAttribute('alt', event.name);
+    popupImage.setAttribute('alt', element.name);
     popupDescription.innerText = element.name;
   });
 });
@@ -81,7 +81,7 @@ function addNewPhoto(evt) {
   cardImage.addEventListener('click', function (event) { // картинка на весь экран
     openPopupFullscreen(popupImage);
     popupImage.setAttribute('src', event.target.src);
-    popupImage.setAttribute('alt', event.name);
+    popupImage.setAttribute('alt', element.name);
     popupDescription.innerText = event.name;
   });
   deleteCard();
