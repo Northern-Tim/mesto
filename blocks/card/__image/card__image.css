@@ -7,4 +7,5 @@
   grid-row: 1/2;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  cursor: pointer;
 }
