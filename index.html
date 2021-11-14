@@ -30,6 +30,7 @@
       <template id="card">
         <article class="card">
           <img src="./images/karelia.jpg" alt="Фото места" class="card__image">
+          <button class="card__button-trash" type="button" aria-label="Удалить"></button>
           <div class="card__description">
             <h2 class="card__title"></h2>
             <button class="card__button" type="button" aria-label="Лайк"></button>
@@ -68,6 +69,14 @@
           required>
         <button class="popup__save-btn" type="submit">Создать</button>
       </form>
+    </div>
+  </div>
+  
+  <div class="popup popup_type_fullscreen">
+    <div class="popup__fullscreen">
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+      <img class="popup__image" src="" alt="">
+      <h3 class="popup__description"></h3>
     </div>
   </div>
 
