@@ -49,21 +49,21 @@ const initialCards = [
 
 // добавляем карточки из массива
 initialCards.forEach(function (element) {
-const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-const cardImage = cardElement.querySelector('.card__image');
-cardElement.querySelector('.card__image').src = element.link;
-cardElement.querySelector('.card__title').textContent = element.name;
-cardsSection.append(cardElement); 
-cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
-  evt.target.classList.toggle('card__button_active');
-}); 
-deleteCard();
-cardImage.addEventListener('click', function (event) { // картинка на весь экран
-  openPopupFullscreen(popupImage);
-  popupImage.setAttribute('src', event.target.src);
-  popupImage.setAttribute('alt', event.name);
-  popupDescription.innerText = element.name;
-}); 
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardImage = cardElement.querySelector('.card__image');
+  cardElement.querySelector('.card__image').src = element.link;
+  cardElement.querySelector('.card__title').textContent = element.name;
+  cardsSection.append(cardElement);
+  cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__button_active');
+  });
+  deleteCard();
+  cardImage.addEventListener('click', function (event) { // картинка на весь экран
+    openPopupFullscreen(popupImage);
+    popupImage.setAttribute('src', event.target.src);
+    popupImage.setAttribute('alt', event.name);
+    popupDescription.innerText = element.name;
+  });
 });
 
 // добавляем новую карточку
@@ -74,21 +74,17 @@ function addNewPhoto(evt) {
   const cardImage = cardElement.querySelector('.card__image');
   cardElement.querySelector('.card__image').src = inputPhotoLink.value;
   cardElement.querySelector('.card__title').textContent = inputPhotoCaption.value;
-  cardsSection.prepend(cardElement); 
-  
+  cardsSection.prepend(cardElement);
   cardElement.querySelector('.card__button').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__button_active');
-  }); 
-
+  });
   cardImage.addEventListener('click', function (event) { // картинка на весь экран
     openPopupFullscreen(popupImage);
     popupImage.setAttribute('src', event.target.src);
     popupImage.setAttribute('alt', event.name);
     popupDescription.innerText = event.name;
-  }); 
-
-  deleteCard ();
-
+  });
+  deleteCard();
   document.querySelector(".card__image").addEventListener("click", () => {
     openFullscreenPlace(evt);
   });
@@ -102,10 +98,10 @@ function openFullscreenPlace() {
 }
 
 // удаление карточки
-function deleteCard () {
+function deleteCard() {
   let deleteItems = document.getElementsByClassName('card__button-trash'); // удаление карточки
   let deleteBtn = Array.from(deleteItems);
-  for(let i=0; i < deleteBtn.length; i++) {
+  for (let i = 0; i < deleteBtn.length; i++) {
     deleteBtn[i].addEventListener('click', function () {
       let element = deleteBtn[i].parentNode;
       element.remove();
@@ -145,7 +141,7 @@ function formSubmitHandler(evt) {
   evt.preventDefault();
   userName.textContent = inputUserName.value;
   userWorking.textContent = inputUserWork.value;
-  closePopup();
+  closePopupUser();
 }
 
 // добавляем слушатели
