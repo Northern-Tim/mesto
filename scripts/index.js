@@ -52,8 +52,28 @@ initialCards.forEach(function (cardInfo) {  // перебираем массив
   createCard(cardInfo);  // вызываем функцию создание карточки
 });
 
+// Изменен порядок функций по указанию наставника
+// применение данных из формы
+function formSubmitHandler(evt) {
+  evt.preventDefault(); // нестандартное применение формы
+  userName.textContent = inputUserName.value; // присваиваем имя
+  userWorking.textContent = inputUserWork.value; // присваиваем подпись
+  closePopup(popupUser);
+}
+
+// применение данных из формы добавления фото
+function formAddSubmitHandler(evt) {
+  evt.preventDefault();  // нестандартное применение формы
+  closePopup(popupPhoto);
+  const card = {
+    name: inputPhotoCaption.value,
+    link: inputPhotoLink.value
+  }
+  createCard(card); // добавляем карточку со значениями из формы
+}
+
 // создаем новую карточку
-function newCard(cardInfo) {
+function addCard(cardInfo) { // !!! Изменил название функции, так как наставник сказал, что в имени должен быть глагол !!!
   const cardTemplate = document.querySelector('#card').content;  // обращаемся к шаблону
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);  // клонируем содержимое шаблона
   const cardImage = cardElement.querySelector('.card__image');  // определяем значение для изображения в карточке
@@ -66,7 +86,7 @@ function newCard(cardInfo) {
 
 // добавляем новую карточку
 function createCard(cardInfo) {
-  const cardElement = newCard(cardInfo); // обращаемся к функции создания карточки
+  const cardElement = addCard(cardInfo); // обращаемся к функции создания карточки
   document.querySelector('.cards').prepend(cardElement); // пушим карточку
   cardElement.querySelector('.card__button').addEventListener('click', likeCard); // добавляем слушатель лайка
   cardElement.querySelector('.card__image').addEventListener('click', () => openPopupFullscreen(cardInfo));  // добавляем слушатель фото на весь экран
@@ -108,23 +128,6 @@ function deleteCard(cardElement) {
   cardElement.remove();  // удаляем элемент
 }
 
-// применение данных из формы
-function formSubmitHandler(evt) {
-  evt.preventDefault(); // нестандартное применение формы
-  userName.textContent = inputUserName.value; // присваиваем имя
-  userWorking.textContent = inputUserWork.value; // присваиваем подпись
-  closePopup(popupUser);
-}
-
-// применение данных из формы добавления фото
-function formAddSubmitHandler(evt) {
-  evt.preventDefault();  // нестандартное применение формы
-  evt.name = inputPhotoCaption.value;  // присваиваем имя
-  evt.link = inputPhotoLink.value; // присваиваем ссылку
-  closePopup(popupPhoto);
-  createCard(evt); // добавляем карточку со значениями из формы
-}
-
 // добавляем слушатели
 changeButton.addEventListener('click', openPopupEdit);
 addButton.addEventListener('click', () => openPopup(popupPhoto));
@@ -136,3 +139,5 @@ formElementPhoto.addEventListener('submit', formAddSubmitHandler);
 
 //Надеюсь, что не смутит количество комментариев. Я пытался из своей абсурдной массы собрать что-то более
 //структурированное и понятное. Потому, делал себе множество пометок.
+
+// !!! Изменено название функции и изменено положение обработчиков по указанию наставника !!!
