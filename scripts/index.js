@@ -137,7 +137,12 @@ closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen
 formElement.addEventListener('submit', formSubmitHandler);
 formElementPhoto.addEventListener('submit', formAddSubmitHandler);
 
-//Надеюсь, что не смутит количество комментариев. Я пытался из своей абсурдной массы собрать что-то более
-//структурированное и понятное. Потому, делал себе множество пометок.
-
-// !!! Изменено название функции и изменено положение обработчиков по указанию наставника !!!
+// валидируем поля
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-btn',
+  inactiveButtonClass: 'popup__save-btn_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__message-error_active'
+});
