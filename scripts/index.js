@@ -104,12 +104,22 @@ function openPopupFullscreen(cardInfo) {
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keyHandler);
 }
 
 // закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyHandler);
 }
+
+// закрытие попапа на клавишу escape
+function keyHandler (evt,) {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape'){
+    closePopup(popup)
+  }
+};
 
 // Заполняем поля попапа информации о пользователе и открываем его
 function openPopupEdit() {
