@@ -8,6 +8,8 @@ const popup = document.querySelector('.popup');
 const popupUser = document.querySelector('.popup_type_user');
 const popupPhoto = document.querySelector('.popup_type_photo');
 const popupFullscreen = document.querySelector('.popup_type_fullscreen');
+const popupOverlay = document.querySelector('.popup__overlay');
+const popupList = document.querySelectorAll('.popup')
 
 const userName = document.querySelector('.menu__user-name');
 const userWorking = document.querySelector('.menu__user-working');
@@ -105,6 +107,7 @@ function openPopupFullscreen(cardInfo) {
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', keyHandler);
+  
 }
 
 // закрытие попапа
@@ -114,12 +117,21 @@ function closePopup(popup) {
 }
 
 // закрытие попапа на клавишу escape
-function keyHandler (evt,) {
+function keyHandler (evt) {
   const popup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape'){
     closePopup(popup)
   }
 };
+
+// закрытие попапа при клике на оверлей
+popupList.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup__overlay')) {
+          closePopup(popup)
+      }
+  })
+})
 
 // Заполняем поля попапа информации о пользователе и открываем его
 function openPopupEdit() {
