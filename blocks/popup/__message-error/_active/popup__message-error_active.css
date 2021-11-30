@@ -1,3 +1,11 @@
 .popup__message-error_active {
   display: block;
+	transition: .3s;
+  padding: 0px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
 }
