@@ -51,27 +51,28 @@ const initialCards = [
 
 // добавляем карточки из массива
 initialCards.forEach(function (cardInfo) {  // перебираем массив
-  createCard(cardInfo);  // вызываем функцию создание карточки
+  createCard(cardInfo); 
+   // вызываем функцию создание карточки
 });
 
 // Изменен порядок функций по указанию наставника
 // применение данных из формы
 function handleSubmitForm(evt) {
-  evt.preventDefault(); // нестандартное применение формы
+  evt.preventDefault(); 
+  // нестандартное применение формы
   userName.textContent = inputUserName.value; // присваиваем имя
   userWorking.textContent = inputUserWork.value; // присваиваем подпись
   closePopup(popupUser);
 }
 
 // применение данных из формы добавления фото
-function HandleAddFormSubmit(evt) {
+function handleAddFormSubmit(evt) {
   evt.preventDefault();  // нестандартное применение формы
   closePopup(popupPhoto);
   const card = {
     name: inputPhotoCaption.value,
     link: inputPhotoLink.value
   }
-  
   inputPhotoCaption.value = '';
   inputPhotoLink.value = '';
   createCard(card); // добавляем карточку со значениями из формы
@@ -108,9 +109,16 @@ function openPopupFullscreen(cardInfo) {
 
 // открытие попапа
 function openPopup(popup) {
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-btn',
+    inactiveButtonClass: 'popup__save-btn_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__message-error_active'
+  });
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleClosePopupByEsc);
-  
 }
 
 // закрытие попапа
@@ -161,14 +169,4 @@ closeButton.addEventListener('click', () => closePopup(popupUser));
 closeButtonPhoto.addEventListener('click', () => closePopup(popupPhoto));
 closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen));
 formElement.addEventListener('submit', handleSubmitForm);
-formElementPhoto.addEventListener('submit', HandleAddFormSubmit);
-
-// валидируем поля
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-btn',
-  inactiveButtonClass: 'popup__save-btn_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__message-error_active'
-});
+formElementPhoto.addEventListener('submit', handleAddFormSubmit);

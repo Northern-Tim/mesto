@@ -55,6 +55,8 @@ function setEventListeners(formElement, config) {
   });
 };
 
+
+
 //включаем валидацию
 function enableValidation(config) {
   const { formSelector, ...object } = config;
@@ -67,3 +69,4 @@ function enableValidation(config) {
     setEventListeners(formElement, object);
   });
 };
+
