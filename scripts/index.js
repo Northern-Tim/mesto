@@ -56,7 +56,7 @@ initialCards.forEach(function (cardInfo) {  // перебираем массив
 
 // Изменен порядок функций по указанию наставника
 // применение данных из формы
-function formSubmitHandler(evt) {
+function handleSubmitForm(evt) {
   evt.preventDefault(); // нестандартное применение формы
   userName.textContent = inputUserName.value; // присваиваем имя
   userWorking.textContent = inputUserWork.value; // присваиваем подпись
@@ -64,13 +64,16 @@ function formSubmitHandler(evt) {
 }
 
 // применение данных из формы добавления фото
-function formAddSubmitHandler(evt) {
+function HandleAddFormSubmit(evt) {
   evt.preventDefault();  // нестандартное применение формы
   closePopup(popupPhoto);
   const card = {
     name: inputPhotoCaption.value,
     link: inputPhotoLink.value
   }
+  
+  inputPhotoCaption.value = '';
+  inputPhotoLink.value = '';
   createCard(card); // добавляем карточку со значениями из формы
 }
 
@@ -83,6 +86,9 @@ function addCard(cardInfo) { // !!! Изменил название функци
   cardTitle.textContent = cardInfo.name; // присваиваем имя
   cardImage.src = cardInfo.link; // присваиваем ссылку
   cardImage.alt = cardInfo.name; // присваиваем альт через запрос имени
+  cardElement.querySelector('.card__button').addEventListener('click', likeCard); // добавляем слушатель лайка
+  cardElement.querySelector('.card__image').addEventListener('click', () => openPopupFullscreen(cardInfo));  // добавляем слушатель фото на весь экран
+  cardElement.querySelector('.card__button-trash').addEventListener('click', () => deleteCard(cardElement));  // добавляем слушатель удаления
   return cardElement; // возвращаем значение карточки с заполненными полями
 }
 
@@ -90,9 +96,6 @@ function addCard(cardInfo) { // !!! Изменил название функци
 function createCard(cardInfo) {
   const cardElement = addCard(cardInfo); // обращаемся к функции создания карточки
   document.querySelector('.cards').prepend(cardElement); // пушим карточку
-  cardElement.querySelector('.card__button').addEventListener('click', likeCard); // добавляем слушатель лайка
-  cardElement.querySelector('.card__image').addEventListener('click', () => openPopupFullscreen(cardInfo));  // добавляем слушатель фото на весь экран
-  cardElement.querySelector('.card__button-trash').addEventListener('click', () => deleteCard(cardElement));  // добавляем слушатель удаления
 }
 
 // открытие фото на весь экран
@@ -106,18 +109,18 @@ function openPopupFullscreen(cardInfo) {
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', keyHandler);
+  document.addEventListener('keydown', handleClosePopupByEsc);
   
 }
 
 // закрытие попапа
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', keyHandler);
+  document.removeEventListener('keydown', handleClosePopupByEsc);
 }
 
 // закрытие попапа на клавишу escape
-function keyHandler (evt) {
+function handleClosePopupByEsc (evt) {
   const popup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape'){
     closePopup(popup)
@@ -153,11 +156,12 @@ function deleteCard(cardElement) {
 // добавляем слушатели
 changeButton.addEventListener('click', openPopupEdit);
 addButton.addEventListener('click', () => openPopup(popupPhoto));
+addButton.addEventListener('click', () => openPopup(popupPhoto));
 closeButton.addEventListener('click', () => closePopup(popupUser));
 closeButtonPhoto.addEventListener('click', () => closePopup(popupPhoto));
 closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen));
-formElement.addEventListener('submit', formSubmitHandler);
-formElementPhoto.addEventListener('submit', formAddSubmitHandler);
+formElement.addEventListener('submit', handleSubmitForm);
+formElementPhoto.addEventListener('submit', HandleAddFormSubmit);
 
 // валидируем поля
 enableValidation({

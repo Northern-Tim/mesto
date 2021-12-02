@@ -4,6 +4,7 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/menu/menu.css);
+@import url(../blocks/menu/__user-container/menu__user-container.css);
 @import url(../blocks/menu/__user-photo/menu__user-photo.css);
 @import url(../blocks/menu/__user-info/menu__user-info.css);
 @import url(../blocks/menu/__user-name-box/menu__user-name-box.css);
@@ -37,5 +38,4 @@
 @import url(../blocks/popup/__save-btn/popup__save-btn.css);
 @import url(../blocks/popup/__save-btn/_disabled/popup__save-btn_disabled.css);
 @import url(../blocks/popup/__message-error/popup__message-error.css);
-@import url(../blocks/popup/__input-error/popup__input-error.css);
 @import url(../blocks/popup/__message-error/_active/popup__message-error_active.css);

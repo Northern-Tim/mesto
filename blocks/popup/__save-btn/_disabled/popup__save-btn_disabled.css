@@ -5,3 +5,8 @@
   color: black;
   opacity: 20%;
 }
+
+.popup__save-btn_disabled:hover {
+  opacity: 20%;
+  cursor: default;
+}

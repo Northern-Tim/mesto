@@ -1,0 +1,10 @@
+.menu__user-container {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .menu__user-container {
+      flex-direction: column;
+  }
+}

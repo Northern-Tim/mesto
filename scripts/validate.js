@@ -44,10 +44,10 @@ function setEventListeners(formElement, config) {
     errorClass
   } = config;
 
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
+  const forms = Array.from(formElement.querySelectorAll(inputSelector));
   const buttonElement = formElement.querySelector(submitButtonSelector);
   toggleButtonState(formElement, buttonElement, inactiveButtonClass);
-  inputList.forEach((inputElement) => {
+  forms.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
       checkInputValidity(formElement, inputElement, { errorClass, inputErrorClass });
       toggleButtonState(formElement, buttonElement, inactiveButtonClass);
@@ -58,9 +58,9 @@ function setEventListeners(formElement, config) {
 //включаем валидацию
 function enableValidation(config) {
   const { formSelector, ...object } = config;
-  const inputList = Array.from(document.querySelectorAll(formSelector));
+  const forms = Array.from(document.querySelectorAll(formSelector));
 
-  inputList.forEach((formElement) => {
+  forms.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
