@@ -1,59 +1,31 @@
-const changeButton = document.querySelector('.menu__user-info-changes-button');
-const addButton = document.querySelector('.menu__add-button');
-const closeButton = document.querySelector('.popup__close-btn');
-const closeButtonPhoto = document.querySelector('.popup_type_photo .popup__close-btn');
-const closeButtonFullscreen = document.querySelector('.popup_type_fullscreen .popup__close-btn');
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
+import {popupUser, popupImage, template, popupPhoto, popupFullscreen, popupList, changeButton, 
+  addButton, closeButton, closeButtonPhoto, closeButtonFullscreen, inputUserName, inputUserWork, 
+  inputPhotoCaption, inputPhotoLink, userName, userWorking, formElement, formElementPhoto, 
+  elementsContainer, initialCards} from './constants.js';
 
-const popup = document.querySelector('.popup');
-const popupUser = document.querySelector('.popup_type_user');
-const popupPhoto = document.querySelector('.popup_type_photo');
-const popupFullscreen = document.querySelector('.popup_type_fullscreen');
-const popupOverlay = document.querySelector('.popup__overlay');
-const popupList = document.querySelectorAll('.popup')
+  const formValidationObject = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__save-btn',
+    inactiveButtonClass: 'popup__save-btn_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__message-error_active'
+  };
 
-const userName = document.querySelector('.menu__user-name');
-const userWorking = document.querySelector('.menu__user-working');
+// создания новой карточки
+function createCard(item) {
+  // тут создаете карточку и возвращаете ее
+  const card = new Card(item, template, openPopupFullscreen);
+  // Создаём карточку и возвращаем наружу
+  return card.generateCard();
+}
 
-const formElement = document.querySelector('.popup__form');
-const inputUserName = document.querySelector('.popup__input_value_name');
-const inputUserWork = document.querySelector('.popup__input_value_work');
-const formElementPhoto = document.querySelector('.popup_type_photo .popup__form');
-
-const inputPhotoCaption = document.querySelector('.popup_type_photo .popup__input_value_name');
-const inputPhotoLink = document.querySelector('.popup_type_photo .popup__input_value_work');
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-// добавляем карточки из массива
-initialCards.forEach(function (cardInfo) {  // перебираем массив
-  createCard(cardInfo); 
-   // вызываем функцию создание карточки
+const result = initialCards.map((item) => {
+  return createCard(item);
 });
+elementsContainer.append(...result);
 
 // Изменен порядок функций по указанию наставника
 // применение данных из формы
@@ -67,56 +39,35 @@ function handleSubmitForm(evt) {
 
 // применение данных из формы добавления фото
 function handleAddFormSubmit(evt) {
-  evt.preventDefault();  // нестандартное применение формы
-  closePopup(popupPhoto);
-  const card = {
-    name: inputPhotoCaption.value,
-    link: inputPhotoLink.value
-  }
+  evt.preventDefault();
+  elementsContainer.prepend(
+    createCard({ 
+      name: inputPhotoCaption.value, 
+      link: inputPhotoLink.value })
+  );
   inputPhotoCaption.value = '';
   inputPhotoLink.value = '';
-  createCard(card); // добавляем карточку со значениями из формы
+  closePopup(popupPhoto);
 }
 
-// создаем новую карточку
-function addCard(cardInfo) { // !!! Изменил название функции, так как наставник сказал, что в имени должен быть глагол !!!
-  const cardTemplate = document.querySelector('#card').content;  // обращаемся к шаблону
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);  // клонируем содержимое шаблона
-  const cardImage = cardElement.querySelector('.card__image');  // определяем значение для изображения в карточке
-  const cardTitle = cardElement.querySelector('.card__title');  // определяем значение для заголовка в карточке
-  cardTitle.textContent = cardInfo.name; // присваиваем имя
-  cardImage.src = cardInfo.link; // присваиваем ссылку
-  cardImage.alt = cardInfo.name; // присваиваем альт через запрос имени
-  cardElement.querySelector('.card__button').addEventListener('click', likeCard); // добавляем слушатель лайка
-  cardElement.querySelector('.card__image').addEventListener('click', () => openPopupFullscreen(cardInfo));  // добавляем слушатель фото на весь экран
-  cardElement.querySelector('.card__button-trash').addEventListener('click', () => deleteCard(cardElement));  // добавляем слушатель удаления
-  return cardElement; // возвращаем значение карточки с заполненными полями
-}
+// добавляем слушатели
+changeButton.addEventListener('click', openPopupEdit);
+addButton.addEventListener('click', () => openPopup(popupPhoto));
+closeButton.addEventListener('click', () => closePopup(popupUser));
+closeButtonPhoto.addEventListener('click', () => closePopup(popupPhoto));
+closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen));
+formElement.addEventListener('submit', handleSubmitForm);
+formElementPhoto.addEventListener('submit', handleAddFormSubmit);
 
-// добавляем новую карточку
-function createCard(cardInfo) {
-  const cardElement = addCard(cardInfo); // обращаемся к функции создания карточки
-  document.querySelector('.cards').prepend(cardElement); // пушим карточку
-}
-
-// открытие фото на весь экран
-function openPopupFullscreen(cardInfo) {
-  popupFullscreen.querySelector('.popup__image').src = cardInfo.link; // присваиваем ссылку
-  popupFullscreen.querySelector('.popup__image').alt = cardInfo.name; // присваиваем альт
-  popupFullscreen.querySelector('.popup__description').textContent = cardInfo.name; // присваиваем описание
+function openPopupFullscreen(name, link) {
   openPopup(popupFullscreen);
+  popupImage.src = link;
+  popupImage.alt = name;
+  popupFullscreen.querySelector(".popup__description").textContent = name;
 }
 
 // открытие попапа
 function openPopup(popup) {
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__save-btn',
-    inactiveButtonClass: 'popup__save-btn_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__message-error_active'
-  });
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleClosePopupByEsc);
 }
@@ -151,16 +102,6 @@ function openPopupEdit() {
   openPopup(popupUser);
 }
 
-// Переключаем лайк в карточке
-function likeCard(evt) {
-  evt.target.classList.toggle('card__button_active');  // переключаем кнопку
-}
-
-// Удаляем карточку
-function deleteCard(cardElement) {
-  cardElement.remove();  // удаляем элемент
-}
-
 // добавляем слушатели
 changeButton.addEventListener('click', openPopupEdit);
 addButton.addEventListener('click', () => openPopup(popupPhoto));
@@ -170,3 +111,10 @@ closeButtonPhoto.addEventListener('click', () => closePopup(popupPhoto));
 closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen));
 formElement.addEventListener('submit', handleSubmitForm);
 formElementPhoto.addEventListener('submit', handleAddFormSubmit);
+
+// включаем валидацию
+const validPopupTypeEdit = new FormValidator(formElement, formValidationObject);
+validPopupTypeEdit.enableValidation();
+
+const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
+validPopupTypeCard.enableValidation();
