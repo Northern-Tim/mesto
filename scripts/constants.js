@@ -4,7 +4,6 @@ const closeButton = document.querySelector('.popup__close-btn');
 const closeButtonPhoto = document.querySelector('.popup_type_photo .popup__close-btn');
 const closeButtonFullscreen = document.querySelector('.popup_type_fullscreen .popup__close-btn');
 
-
 const popupUser = document.querySelector('.popup_type_user');
 const popupPhoto = document.querySelector('.popup_type_photo');
 const popupFullscreen = document.querySelector('.popup_type_fullscreen');
@@ -20,9 +19,17 @@ const inputUserWork = document.querySelector('.popup__input_value_work');
 const formElementPhoto = document.querySelector('.popup_type_photo .popup__form');
 
 const popupImage = popupFullscreen.querySelector('.popup__image');
+const popupFullscreenDescript = popupFullscreen.querySelector(".popup__description");
 
 const inputPhotoCaption = document.querySelector('.popup_type_photo .popup__input_value_name');
 const inputPhotoLink = document.querySelector('.popup_type_photo .popup__input_value_work');
+
+const formPhoto = document.querySelector('#photo');
+const formUser = document.querySelector('#form');
+const errorFieldsPhoto = Array.from(formPhoto.querySelectorAll('.popup__message-error'));
+const inputFieldsPhoto = Array.from(formPhoto.querySelectorAll('.popup__input'));
+const errorFieldsUser = Array.from(formUser.querySelectorAll('.popup__message-error'));
+const inputFieldsUser = Array.from(formUser.querySelectorAll('.popup__input'));
 
 const template = document.querySelector('#card');
 
@@ -56,4 +63,4 @@ const initialCards = [
 export {popupUser, popupImage, template, popupPhoto, popupFullscreen, popupList, changeButton, 
   addButton, closeButton, closeButtonPhoto, closeButtonFullscreen, inputUserName, inputUserWork, 
   inputPhotoCaption, inputPhotoLink, userName, userWorking, formElement, formElementPhoto, 
-  elementsContainer, initialCards}
+  elementsContainer, initialCards, popupFullscreenDescript, errorFieldsPhoto, inputFieldsPhoto, errorFieldsUser, inputFieldsUser}

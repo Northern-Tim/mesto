@@ -17,16 +17,12 @@ export class Card {
     this._element = null;
   }
 
-  _likeCard(evt) {
-    evt.target.classList.toggle("card__button_active");
-  }
-
   _setEventListeners() {
     const buttonDeleteCard = this._element.querySelector(".card__button-trash");
     buttonDeleteCard.addEventListener("click", () => this._deleteCard());
     this._cardImage.addEventListener("click", () => this._openPopupFullscreen(this._name, this._link));
     const buttonLike = this._element.querySelector(".card__button");
-    buttonLike.addEventListener("click", this._likeCard);
+    buttonLike.addEventListener("click", ()=>{ buttonLike.classList.toggle('card__button_active');});
   }
   
   generateCard() {
@@ -40,5 +36,3 @@ export class Card {
     return this._element;
   }
 }
-
-

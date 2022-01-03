@@ -3,7 +3,7 @@ import { Card } from './Card.js';
 import {popupUser, popupImage, template, popupPhoto, popupFullscreen, popupList, changeButton, 
   addButton, closeButton, closeButtonPhoto, closeButtonFullscreen, inputUserName, inputUserWork, 
   inputPhotoCaption, inputPhotoLink, userName, userWorking, formElement, formElementPhoto, 
-  elementsContainer, initialCards} from './constants.js';
+  elementsContainer, initialCards, popupFullscreenDescript, errorFieldsPhoto, inputFieldsPhoto, errorFieldsUser, inputFieldsUser} from './constants.js';
 
   const formValidationObject = {
     formSelector: '.popup__form',
@@ -30,7 +30,6 @@ elementsContainer.append(...result);
 // Изменен порядок функций по указанию наставника
 // применение данных из формы
 function handleSubmitForm(evt) {
-  evt.preventDefault(); 
   // нестандартное применение формы
   userName.textContent = inputUserName.value; // присваиваем имя
   userWorking.textContent = inputUserWork.value; // присваиваем подпись
@@ -39,15 +38,16 @@ function handleSubmitForm(evt) {
 
 // применение данных из формы добавления фото
 function handleAddFormSubmit(evt) {
-  evt.preventDefault();
   elementsContainer.prepend(
     createCard({ 
       name: inputPhotoCaption.value, 
       link: inputPhotoLink.value })
   );
+  const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
+  validPopupTypeCard.enableValidation();
+  closePopup(popupPhoto);
   inputPhotoCaption.value = '';
   inputPhotoLink.value = '';
-  closePopup(popupPhoto);
 }
 
 // добавляем слушатели
@@ -63,12 +63,14 @@ function openPopupFullscreen(name, link) {
   openPopup(popupFullscreen);
   popupImage.src = link;
   popupImage.alt = name;
-  popupFullscreen.querySelector(".popup__description").textContent = name;
+  popupFullscreenDescript.textContent = name;
 }
 
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
+  validPopupTypeCard.enableValidation();
   document.addEventListener('keydown', handleClosePopupByEsc);
 }
 
@@ -76,12 +78,14 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleClosePopupByEsc);
+  inputPhotoCaption.value = '';
+  inputPhotoLink.value = '';
 }
 
 // закрытие попапа на клавишу escape
-function handleClosePopupByEsc (evt) {
-  const popup = document.querySelector('.popup_opened');
+function handleClosePopupByEsc (evt) { 
   if (evt.key === 'Escape'){
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup)
   }
 };
@@ -100,21 +104,25 @@ function openPopupEdit() {
   inputUserName.value = userName.textContent;  // присваиваем имя
   inputUserWork.value = userWorking.textContent;  // присваиваем подпись
   openPopup(popupUser);
+  const validPopupTypeEdit = new FormValidator(formElement, formValidationObject);
+  validPopupTypeEdit.enableValidation();
+}
+
+function resetErrorsForm(errorList, inputList) {
+  errorList.forEach((error) => {
+    error.textContent = '';
+  });
+  inputList.forEach((input) => {
+    input.classList.remove('popup__input_type_error');
+  })
 }
 
 // добавляем слушатели
-changeButton.addEventListener('click', openPopupEdit);
-addButton.addEventListener('click', () => openPopup(popupPhoto));
-addButton.addEventListener('click', () => openPopup(popupPhoto));
-closeButton.addEventListener('click', () => closePopup(popupUser));
-closeButtonPhoto.addEventListener('click', () => closePopup(popupPhoto));
-closeButtonFullscreen.addEventListener('click', () => closePopup(popupFullscreen));
-formElement.addEventListener('submit', handleSubmitForm);
-formElementPhoto.addEventListener('submit', handleAddFormSubmit);
-
-// включаем валидацию
-const validPopupTypeEdit = new FormValidator(formElement, formValidationObject);
-validPopupTypeEdit.enableValidation();
-
-const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
-validPopupTypeCard.enableValidation();
+changeButton.addEventListener('click', () => {
+  resetErrorsForm(errorFieldsUser, inputFieldsUser); 
+  openPopupEdit;
+});
+addButton.addEventListener('click', () => {
+  resetErrorsForm(errorFieldsPhoto, inputFieldsPhoto); 
+  openPopup(popupPhoto);
+});
