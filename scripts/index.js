@@ -14,6 +14,10 @@ import {popupUser, popupImage, template, popupPhoto, popupFullscreen, popupList,
     errorClass: 'popup__message-error_active'
   };
 
+  const formAdd = new FormValidator(formElementPhoto, formValidationObject);
+  const formEdit = new FormValidator(formElement, formValidationObject);
+  formAdd.enableValidation();
+
 // создания новой карточки
 function createCard(item) {
   // тут создаете карточку и возвращаете ее
@@ -43,11 +47,10 @@ function handleAddFormSubmit(evt) {
       name: inputPhotoCaption.value, 
       link: inputPhotoLink.value })
   );
-  const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
-  validPopupTypeCard.enableValidation();
-  closePopup(popupPhoto);
   inputPhotoCaption.value = '';
   inputPhotoLink.value = '';
+  closePopup(popupPhoto);
+  formAdd.enableValidation();
 }
 
 // добавляем слушатели
@@ -60,17 +63,15 @@ formElement.addEventListener('submit', handleSubmitForm);
 formElementPhoto.addEventListener('submit', handleAddFormSubmit);
 
 function openPopupFullscreen(name, link) {
-  openPopup(popupFullscreen);
   popupImage.src = link;
   popupImage.alt = name;
   popupFullscreenDescript.textContent = name;
+  openPopup(popupFullscreen);
 }
 
 // открытие попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  const validPopupTypeCard = new FormValidator(formElementPhoto, formValidationObject);
-  validPopupTypeCard.enableValidation();
   document.addEventListener('keydown', handleClosePopupByEsc);
 }
 
@@ -78,8 +79,6 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleClosePopupByEsc);
-  inputPhotoCaption.value = '';
-  inputPhotoLink.value = '';
 }
 
 // закрытие попапа на клавишу escape
@@ -104,8 +103,7 @@ function openPopupEdit() {
   inputUserName.value = userName.textContent;  // присваиваем имя
   inputUserWork.value = userWorking.textContent;  // присваиваем подпись
   openPopup(popupUser);
-  const validPopupTypeEdit = new FormValidator(formElement, formValidationObject);
-  validPopupTypeEdit.enableValidation();
+  formEdit.enableValidation();
 }
 
 function resetErrorsForm(errorList, inputList) {
