@@ -17,6 +17,7 @@ import {popupUser, popupImage, template, popupPhoto, popupFullscreen, popupList,
   const formAdd = new FormValidator(formElementPhoto, formValidationObject);
   const formEdit = new FormValidator(formElement, formValidationObject);
   formAdd.enableValidation();
+  formEdit.enableValidation();
 
 // создания новой карточки
 function createCard(item) {
@@ -50,7 +51,7 @@ function handleAddFormSubmit(evt) {
   inputPhotoCaption.value = '';
   inputPhotoLink.value = '';
   closePopup(popupPhoto);
-  formAdd.enableValidation();
+  formAdd.disableButton();
 }
 
 // добавляем слушатели
@@ -103,7 +104,7 @@ function openPopupEdit() {
   inputUserName.value = userName.textContent;  // присваиваем имя
   inputUserWork.value = userWorking.textContent;  // присваиваем подпись
   openPopup(popupUser);
-  formEdit.enableValidation();
+  formEdit.enableButton();
 }
 
 function resetErrorsForm(errorList, inputList) {

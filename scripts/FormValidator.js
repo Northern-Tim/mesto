@@ -50,10 +50,12 @@ export  class FormValidator {
 
   enableButton() {
     this._submitButton.classList.remove(this._config.inactiveButtonClass);
+    this._submitButton.removeAttribute("disabled", "disabled");
   }
 
   disableButton() {
     this._submitButton.classList.add(this._config.inactiveButtonClass);
+    this._submitButton.setAttribute("disabled", "disabled");
   }
   
   enableValidation() {
